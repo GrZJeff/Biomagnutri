@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Productos | Biomagnutri</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul class="nav">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="contacto.html">Contáctanos</a></li>
+        <li><a href="login.html">Inicia sesión</a></li>
+        <li><a href="registro.html">Regístrate</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Productos</h2>
+    <form id="productForm">
+      <input type="text" id="prodName" placeholder="Nombre del producto" required>
+      <input type="text" id="prodDesc" placeholder="Descripción">
+      <input type="number" id="prodPrice" placeholder="Precio" required>
+      <button type="submit">Crear Producto</button>
+      <button id="logoutBtn">Cerrar sesión</button>
+    </form>
+
+    <ul id="productList"></ul>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

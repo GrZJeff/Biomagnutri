@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Administrador | Biomagnutri</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul class="nav">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="contacto.html">Contáctanos</a></li>
+        <li><a href="login.html">Inicia sesión</a></li>
+        <li><a href="registro.html">Regístrate</a></li>
+      </ul>
+    </nav>
+    <h1 style="text-align: center; margin-top: 30px;">Bienvenida Magali</h1>
+    <div style="text-align: center; margin-top: 10px;">
+      <button id="logoutBtn">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main style="text-align: center; padding: 40px;">
+    <h2>Panel de Control</h2>
+    <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 30px;">
+      <button onclick="location.href='usuarios.html'">👥 Visualizar usuarios nuevos</button>
+      <button onclick="location.href='compras.html'">🛒 Compras totales</button>
+      <button onclick="location.href='agregar-producto.html'">➕ Agregar producto</button>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

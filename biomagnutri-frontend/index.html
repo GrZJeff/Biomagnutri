@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Biomagnutri | Inicio</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 30px 30px;
+      background-color: #f3fcf9;
+      border-bottom: 2px solid #2e7d32;
+    }
+
+    header img {
+      height: 100px;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      flex-grow: 1;
+      margin-left: 20px;
+      align-items: center;
+    }
+
+    .nav-left,
+    .nav-right {
+      display: flex;
+      gap: 15px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-left li a,
+    .nav-right li a {
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: bold;
+      padding: 8px 16px;
+      border: 2px solid #2e7d32;
+      border-radius: 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .nav-left li a:hover,
+    .nav-right li a:hover {
+      background-color: #2e7d32;
+      color: white;
+    }
+
+    /* Menú de usuario */
+    .user-menu {
+      position: relative;
+      margin-left: 20px;
+    }
+
+    .user-menu button {
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      font-weight: bold;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .user-dropdown {
+      position: absolute;
+      top: 40px;
+      right: 0;
+      background-color: white;
+      border: 2px solid #2e7d32;
+      border-radius: 10px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: none;
+      width: 180px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .user-dropdown li a {
+      display: block;
+      padding: 10px;
+      color: #2e7d32;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .user-dropdown li a:hover {
+      background-color: #f0f8f5;
+    }
+
+    main {
+      background-color: #f0f8f5;
+      padding: 40px 30px;
+    }
+
+    .main-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .main-text {
+      flex: 1;
+      min-width: 250px;
+      max-width: 600px;
+    }
+
+    .main-text h2 {
+      color: #2e7d32;
+      font-size: 60px;
+      margin-bottom: 10px;
+      margin-left: 470px;
+      white-space: nowrap;
+    }
+
+    .main-text p {
+      font-size: 18px;
+      margin-bottom: 20px;
+      margin-left: 470px;
+      white-space: nowrap;
+      color: #333;
+    }
+
+    .boton-comprar {
+      padding: 10px 20px;
+      background-color: #2e7d32;
+      color: white;
+      border: 2px solid #2e7d32;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+      margin-left: 460px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .boton-comprar:hover {
+      background-color: white;
+      color: #2e7d32;
+    }
+
+    .texto-secundario {
+      margin-top: 10px;
+      font-size: 15px;
+      color: #2e7d32;
+      margin-left: 470px;
+    }
+
+    .main-image {
+      flex: 1;
+      text-align: right;
+      min-width: 250px;
+    }
+
+    .main-image img {
+      max-width: 550px;
+      margin-right: 370px;
+    }
+
+    #faqColageno {
+      padding: 40px 20px;
+      background-color: #f0f8f5;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    .faq-grid h3 {
+      color: #2e7d32;
+      margin-bottom: 10px;
+    }
+
+    .faq-grid p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">
+      <img src="img/logo.png" alt="Logo Biomagnutri">
+    </a>
+    <div class="nav-container">
+      <ul class="nav-left">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="contacto.html">Contáctanos</a></li>
+      </ul>
+      <ul class="nav-right">
+        <li><a href="login.html">Inicia sesión</a></li>
+        <li><a href="registro.html">Regístrate</a></li>
+      </ul>
+      <!-- Menú de usuario -->
+      <div class="user-menu" id="userMenu" style="display: none;">
+        <button id="userNameBtn">Nombre</button>
+        <ul class="user-dropdown" id="userDropdown">
+          <li><a href="perfil.html">Administrar perfil</a></li>
+          <li><a href="#" id="logoutBtn">Cerrar sesión</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="main-content">
+      <div class="main-text">
+        <h2>Belleza y salud</h2>
+        <p>Colágeno hidrolizado: nutrición inteligente, resultados visibles.</p>
+        <button class="boton-comprar" onclick="location.href='registro.html'">Comprar</button>
+        <div class="texto-secundario">Regístrate y compra hoy mismo</div>
+      </div>
+      <div class="main-image">
+        <img src="img/frasco.png" alt="Frasco de colágeno hidrolizado">
+      </div>
+    </div>
+  </main>
+
+  <section id="faqColageno">
+    <h2>Preguntas frecuentes sobre el colágeno hidrolizado</h2>
+    <div class="faq-grid">
+      <div>
+        <h3>¿Qué es el Colágeno Hidrolizado?</h3>
+        <p>Es una forma fácil de agregar más colágeno a tu dieta. Se disuelve rápidamente en agua y se absorbe fácilmente gracias al proceso de hidrolización.</p>
+      </div>
+      <div>
+        <h3>¿Para qué sirve?</h3>
+        <p>Ayuda a mantener la estructura de la piel, articulaciones y huesos. Es especialmente útil en la edad adulta.</p>
+      </div>
+      <div>
+        <h3>¿Quién lo puede tomar?</h3>
+        <p>Adultos sanos desde los 25 años, deportistas, adultos mayores y quienes buscan mejorar su bienestar.</p>
+      </div>
+      <div>
+        <h3>¿Cuentan con envíos?</h3>
+        <p>Sí, hacemos envíos a todo el país y entregas locales en Aguascalientes.</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Simulación de sesión iniciada
+    const user = {
+      nombre: "Alberto",
+      rol: "admin"
+    };
+
+    const userMenu = document.getElementById("userMenu");
+    const userNameBtn = document.getElementById("userNameBtn");
+    const userDropdown = document.getElementById("userDropdown");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    // Mostrar nombre y menú si hay sesión
+    if (user) {
+      userMenu.style.display = "block";
+      userNameBtn.textContent = user.nombre;
+    }
+
+    // Toggle del menú desplegable
+    userNameBtn.addEventListener("click", () => {
+      userDropdown.style.display = userDropdown.style.display === "block" ? "none" : "block";
+    });
+
+    // Cerrar sesión
+    logoutBtn.addEvent

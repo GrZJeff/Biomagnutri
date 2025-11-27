@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Nosotros | Biomagnutri</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #edfaf4;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 30px 30px;
+      background-color: #f0f8f5;
+      border-bottom: 2px solid #2e7d32;
+    }
+
+    header img {
+      height: 100px;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      flex-grow: 1;
+      margin-left: 20px;
+    }
+
+    .nav-left,
+    .nav-right {
+      display: flex;
+      gap: 15px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-left li a,
+    .nav-right li a {
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: bold;
+      padding: 8px 16px;
+      border: 2px solid #2e7d32;
+      border-radius: 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .nav-left li a:hover,
+    .nav-right li a:hover {
+      background-color: #2e7d32;
+      color: white;
+    }
+
+
+    /* SECCIÓN NOSOTROS */
+    .hero-nosotros {
+      width: 30%;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      margin-right: 80%;
+    }
+
+    .hero-nosotros img {
+      width: 100%;
+      max-height: 220px;
+      object-fit: cover;
+    }
+
+    
+
+
+    /* CONTENIDO PRINCIPAL */
+    .nosotros-container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 40px 60px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .nosotros-texto {
+      max-width: 600px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .nosotros-texto ul {
+      margin-top: 20px;
+    }
+
+    .nosotros-texto li {
+      margin-bottom: 10px;
+    }
+
+    .ceo-img-container {
+      position: relative;
+    }
+
+    .ceo-img-container img {
+      width: 330px;
+      height: auto;
+      border-radius: 18px;
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Botón volver */
+    .volver {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .volver button {
+      padding: 12px 25px;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .volver button:hover {
+      background-color: #1b5e20;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html">
+      <img src="img/logo.png" alt="Logo Biomagnutri">
+    </a>
+
+    <div class="nav-container">
+      <ul class="nav-left">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="contacto.html">Contáctanos</a></li>
+      </ul>
+      <ul class="nav-right">
+        <li><a href="login.html">Inicia sesión</a></li>
+        <li><a href="registro.html">Regístrate</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Imagen verde superior -->
+  <div class="hero-nosotros">
+    <img src="img/nosotros.png">
+    <div class="hero-title"></div>
+  </div>
+
+  <!-- Contenido estilo plantilla -->
+  <section class="nosotros-container">
+
+    <div class="nosotros-texto">
+      <p>
+        Soy Ivette Magali, Nutrióloga profesional de la salud. Estoy capacitada para identificar, evaluar y enseñar a las personas a cambiar la alimentación que les generan problemas desde leves, hasta graves a su cuerpo. 
+      </p>
+
+      <p>
+        Me he preparado para esta profesión que amo y me apasiona, soy constante investigadora y participante en nuevos estudios para estar actualizada día a día. Mi objetivo principal es llegar al impacto en la salud que todo individuo desea; por lo anterior escribí la “Guía Alimentaria para la Prevención y Control de Enfermedades Crónicas”.
+      </p>
+
+      <ul>
+        <li>Nutrióloga activa con consultas en línea, presenciales y a domicilio en Aguascalientes.</li>
+        <li>Conferencista en empresas como Grupo Lala, INEGI, UAA y Radio Magia Seattle.</li>
+        <li>Asesora salubrista en restaurantes, enfocada en prevención y manejo higiénico de alimentos.</li>
+        <li>Atención comunitaria en el Hospital SEA MAR en Seattle, WA.</li>
+        <li>Formación en Nutrición Geriátrica y Primeros Auxilios Psicológicos.</li>
+        <li>Docente en la UAA en Nutrición Comunitaria y Salud Pública.</li>
+      </ul>
+    </div>
+
+    <div class="ceo-img-container">
+      <img src="img/ceo.png" alt="Foto de Ivette Magali">
+    </div>
+
+  </section>
+
+
+
+</body>
+</html>

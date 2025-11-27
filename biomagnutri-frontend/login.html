@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | Biomagnutri</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Base */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f8f5;
+    }
+
+    /* Header consistente */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 30px 30px;
+      background-color: #f0f8f5;
+      border-bottom: 2px solid #2e7d32;
+    }
+
+    header img {
+      height: 100px;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      flex-grow: 1;
+      margin-left: 20px;
+    }
+
+    .nav-left,
+    .nav-right {
+      display: flex;
+      gap: 15px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-left li a,
+    .nav-right li a {
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: bold;
+      padding: 8px 16px;
+      border: 2px solid #2e7d32;
+      border-radius: 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .nav-left li a:hover,
+    .nav-right li a:hover {
+      background-color: #2e7d32;
+      color: white;
+    }
+
+    /* Layout del main (CORREGIDO Y CENTRADO) */
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 30px;
+      flex-wrap: wrap;
+      gap: 60px;
+    }
+
+    .login-section {
+      flex: 0 1 400px;
+      text-align: center;
+    }
+
+    /* Título */
+    .login-section h2 {
+      font-size: 28px;
+      color: #2e7d32;
+      margin-bottom: 20px;
+      margin-top: 50px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    /* Formulario */
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center; 
+      gap: 15px;
+    }
+
+    input, select, button {
+      width: 250px;
+      padding: 10px;
+      border: 2px solid #2e7d32;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #2e7d32;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    button:hover {
+      background-color: white;
+      color: #2e7d32;
+    }
+
+    .login-section a {
+      font-size: 14px;
+      color: #2e7d32;
+      text-decoration: underline;
+      text-align: center;
+      width: 250px;
+    }
+
+    .registro-link {
+      text-align: center;
+      width: 250px;
+      font-size: 14px;
+      color: #2e7d32;
+      white-space: nowrap;
+    }
+
+    /* Imagen */
+    .image-section {
+      flex: 0 1 450px;
+      text-align: center;
+    }
+
+    .image-section img {
+      margin-top: 40px;
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="index.html">
+      <img src="img/logo.png" alt="Logo Biomagnutri">
+    </a>
+
+    <div class="nav-container">
+      <ul class="nav-left">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="contacto.html">Contáctanos</a></li>
+      </ul>
+
+      <ul class="nav-right">
+        <li><a href="login.html">Inicia sesión</a></li>
+        <li><a href="registro.html">Regístrate</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="login-section">
+      <h2>Inicia Sesión</h2>
+
+      <form id="loginForm">
+        <input type="email" id="loginEmail" placeholder="abc@gmail.com" required>
+        <input type="password" id="loginPassword" placeholder="Contraseña" required>
+
+        <select id="loginRole" required>
+          <option value="" disabled selected>Selecciona tu rol</option>
+          <option value="usuario">Usuario</option>
+          <option value="admin">Administrador</option>
+        </select>
+
+        <a href="#">¿Olvidaste tu contraseña?</a>
+
+        <button type="submit">Ingresar</button>
+
+        <div class="registro-link">¿No tienes cuenta? <a href="registro.html">Regístrate</a></div>
+      </form>
+    </div>
+
+    <div class="image-section">
+      <img src="img/frasconaranja.png" alt="Frasco de colágeno hidrolizado con naranja">
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
