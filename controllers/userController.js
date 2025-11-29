@@ -1,7 +1,18 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const nodemailer = require('nodemailer');
 
+// Configuración de nodemailer (usa tus credenciales reales en .env)
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
+  }
+});
+
+// ---------------- REGISTRO ----------------
 exports.registerUser = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
@@ -41,6 +52,7 @@ exports.registerUser = async (req, res) => {
   }
 };
 
+// ---------------- LOGIN ----------------
 exports.loginUser = async (req, res) => {
   try {
     const { email, password, role } = req.body;
@@ -49,6 +61,7 @@ exports.loginUser = async (req, res) => {
       return res.status(400).json({ message: 'Correo y contraseña son obligatorios' });
     }
 
+    // Login especial para admin fijo
     if (role && role.toLowerCase() === "admin") {
       if (email.trim().toLowerCase() !== "admin@biomagnutri.com" || password !== "123456") {
         return res.status(403).json({ message: "Acceso denegado: solo el administrador autorizado puede ingresar" });
@@ -94,5 +107,68 @@ exports.loginUser = async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({ message: 'Error en el servidor', error: error.message });
+  }
+};
+
+// ---------------- RESTABLECER CONTRASEÑA ----------------
+
+// Paso 1: enviar código
+exports.sendResetCode = async (req, res) => {
+  try {
+    const { email } = req.body;
+    if (!email) return res.status(400).json({ message: "Correo requerido" });
+
+    console.log("Intentando enviar código a:", email);
+
+
+    const user = await User.findOne({ email: email.trim().toLowerCase() });
+    if (!user) return res.status(404).json({ message: "Usuario no encontrado" });
+
+    const code = Math.floor(100000 + Math.random() * 900000).toString();
+    user.resetCode = code;
+    await user.save();
+
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: "Código de verificación",
+      text: `Tu código de verificación es: ${code}`
+    });
+
+    res.json({ message: "Código enviado a tu correo" });
+  } catch (error) {
+    res.status(500).json({ message: "Error al enviar código", error: error.message });
+  }
+};
+
+// Paso 2: verificar código
+exports.verifyResetCode = async (req, res) => {
+  try {
+    const { email, code } = req.body;
+    const user = await User.findOne({ email: email.trim().toLowerCase() });
+    if (user && user.resetCode === code) {
+      return res.json({ success: true });
+    }
+    res.json({ success: false, message: "Código inválido" });
+  } catch (error) {
+    res.status(500).json({ message: "Error al verificar código", error: error.message });
+  }
+};
+
+// Paso 3: restablecer contraseña
+exports.resetPassword = async (req, res) => {
+  try {
+    const { email, newPassword } = req.body;
+    const user = await User.findOne({ email: email.trim().toLowerCase() });
+    if (!user) return res.status(404).json({ message: "Usuario no encontrado" });
+
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(newPassword, salt);
+    user.resetCode = null; // limpiar código
+    await user.save();
+
+    res.json({ message: "Contraseña restablecida con éxito" });
+  } catch (error) {
+    res.status(500).json({ message: "Error al restablecer contraseña", error: error.message });
   }
 };

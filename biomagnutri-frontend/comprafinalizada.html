@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Compra Finalizada | Biomagnutri</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3fcf9;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Contenedor principal */
+    .container {
+      max-width: 700px;
+      margin: 60px auto;
+      background-color: white;
+      border: 2px solid #2e7d32;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .check-icon {
+      font-size: 80px;
+      color: #2e7d32;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: #2e7d32;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .order-info {
+      margin-top: 30px;
+      text-align: left;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .order-info p {
+      margin: 8px 0;
+    }
+
+    .btn-volver {
+      margin-top: 30px;
+      padding: 12px 24px;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn-volver:hover {
+      background-color: white;
+      color: #2e7d32;
+      border: 2px solid #2e7d32;
+    }
+
+    /* Header y footer consistentes */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 30px;
+      background-color: #f3fcf9;
+      border-bottom: 2px solid #2e7d32;
+    }
+    header img { height: 100px; }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      flex-grow: 1;
+      margin-left: 20px;
+      align-items: center;
+    }
+    .nav-left, .nav-right {
+      display: flex;
+      gap: 15px;
+      list-style: none;
+      margin: 0; padding: 0;
+    }
+    .nav-left li a, .nav-right li a {
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: bold;
+      padding: 8px 16px;
+      border: 2px solid #2e7d32;
+      border-radius: 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .nav-left li a:hover, .nav-right li a:hover {
+      background-color: #2e7d32; color: white;
+    }
+
+    /* Menú de usuario */
+    .user-menu {
+      position: relative;
+      margin-left: 20px;
+      display: none;
+    }
+    .user-menu button {
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      font-weight: bold;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+    .user-dropdown {
+      position: absolute;
+      top: 40px;
+      right: 0;
+      background-color: white;
+      border: 2px solid #2e7d32;
+      border-radius: 10px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: none;
+      width: 180px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .user-dropdown li a {
+      display: block;
+      padding: 10px;
+      color: #2e7d32;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .user-dropdown li a:hover { background-color: #f0f8f5; }
+    .user-dropdown.show { display: block; }
+
+    footer {
+      background-color: #ccf3ce;
+      padding: 80px 40px;
+      text-align: center;
+    }
+    footer img { height: 100px; margin-bottom: 10px; }
+    footer p { font-size: 13px; color: #999; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <a href="index.html"><img src="img/logo.png" alt="Logo Biomagnutri"></a>
+    <div class="nav-container">
+      <ul class="nav-left">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="contacto.html">Contáctanos</a></li>
+      </ul>
+      <ul class="nav-right">
+        <li><a href="login.html">Inicia sesión</a></li>
+        <li><a href="registro.html">Regístrate</a></li>
+      </ul>
+      <div class="user-menu" id="userMenu" style="display:none;">
+        <button id="userNameBtn">Bienvenido</button>
+        <ul class="user-dropdown" id="userDropdown">
+          <li><a href="perfil.html">Administrar perfil</a></li>
+          <li><a href="#" id="logoutBtn">Cerrar sesión</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenido principal -->
+  <div class="container">
+    <div class="check-icon">✅</div>
+    <h1>¡Gracias por tu compra!</h1>
+    <p>Tu pedido ha sido procesado correctamente.</p>
+
+    <div class="order-info">
+      <p><strong>Número de orden:</strong> 000001</p>
+      <p><strong>Fecha de orden:</strong> 28 de noviembre de 2025</p>
+      <hr>
+      <p><strong>Producto:</strong> Colágeno Hidrolizado de 30 cápsulas</p>
+      <p><strong>Frascos:</strong> 5</p>
+      <p><strong>Cantidad cápsulas:</strong> 30</p>
+      <p><strong>Precio por frasco:</strong> $200.00 MXN</p>
+      <p><strong>Total:</strong> $1000.00 MXN</p>
+    </div>
+
+    <button class="btn-volver" onclick="window.location.href='index.html'">Volver al inicio</button>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <img src="img/logo.png" alt="Logo Biomagnutri">
+    <p>© 2023 Biomagnutri S.A. de C.V. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

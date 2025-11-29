@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Comprar | Biomagnutri</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3fcf9;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 30px 30px;
+      background-color: #f3fcf9;
+      border-bottom: 2px solid #2e7d32;
+    }
+
+    header img {
+      height: 100px;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      flex-grow: 1;
+      margin-left: 20px;
+      align-items: center;
+    }
+
+    .nav-left,
+    .nav-right {
+      display: flex;
+      gap: 15px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-left li a,
+    .nav-right li a {
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: bold;
+      padding: 8px 16px;
+      border: 2px solid #2e7d32;
+      border-radius: 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .nav-left li a:hover,
+    .nav-right li a:hover {
+      background-color: #2e7d32;
+      color: white;
+    }
+
+    .user-menu {
+      position: relative;
+      margin-left: 20px;
+    }
+
+    .user-menu button {
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      font-weight: bold;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .user-dropdown {
+      position: absolute;
+      top: 40px;
+      right: 0;
+      background-color: white;
+      border: 2px solid #2e7d32;
+      border-radius: 10px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: none;
+      width: 180px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .user-dropdown li a {
+      display: block;
+      padding: 10px;
+      color: #2e7d32;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .user-dropdown li a:hover {
+      background-color: #f0f8f5;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background-color: white;
+      border: 2px solid #2e7d32;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #2e7d32;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    .product-image {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .product-image img {
+      max-width: 250px;
+    }
+
+    .product-details {
+      margin-bottom: 20px;
+    }
+
+    .product-details p {
+      font-size: 16px;
+      margin: 8px 0;
+      color: #333;
+    }
+
+    label {
+      font-weight: bold;
+      color: #2e7d32;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border: 2px solid #2e7d32;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: bold;
+      color: #2e7d32;
+      margin-top: 20px;
+    }
+
+    .btn-comprar {
+      margin-top: 30px;
+      padding: 12px 24px;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn-comprar:hover {
+      background-color: white;
+      color: #2e7d32;
+      border: 2px solid #2e7d32;
+    }
+
+    .nota {
+      font-size: 13px;
+      color: #666;
+      margin-top: 10px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">
+      <img src="img/logo.png" alt="Logo Biomagnutri">
+    </a>
+    <div class="nav-container">
+      <ul class="nav-left">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="contacto.html">Contáctanos</a></li>
+      </ul>
+      <ul class="nav-right">
+        <li><a href="login.html">Inicia sesión</a></li>
+        <li><a href="registro.html">Regístrate</a></li>
+      </ul>
+      <div class="user-menu" id="userMenu" style="display: none;">
+        <button id="userNameBtn">Nombre</button>
+        <ul class="user-dropdown" id="userDropdown">
+          <li><a href="perfil.html">Administrar perfil</a></li>
+          <li><a href="#" id="logoutBtn">Cerrar sesión</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1>Colágeno Hidrolizado de Cápsulas</h1>
+
+    <div class="product-image">
+      <img src="img/frasco.png" alt="Colágeno Hidrolizado">
+    </div>
+
+    <div class="product-details">
+      <p><strong>SKU:</strong> 100100424</p>
+      <p><strong>Tipo:</strong> Suplemento Alimenticio</p>
+      <label for="presentacion">Selecciona cantidad de cápsulas:</label>
+      <select id="presentacion">
+        <option value="30">30 cápsulas</option>
+        <option value="60">60 cápsulas</option>
+        <option value="100">100 cápsulas</option>
+      </select>
+    </div>
+
+    <label for="frascos">Selecciona cantidad de frascos:</label>
+<select id="frascos">
+  <option value="1">1 frasco</option>
+  <option value="2">2 frascos</option>
+  <option value="3">3 frascos</option>
+  <option value="4">4 frascos</option>
+  <option value="5">5 frascos</option>
+  <option value="6">6 frascos</option>
+  <option value="7">7 frascos</option>
+  <option value="8">8 frascos</option>
+  <option value="9">9 frascos</option>
+  <option value="10">10 frascos</option>
+</select>
+
+    <div class="price" id="precio">$200.00 MXN</div>
+
+    <button class="btn-comprar" onclick="agregarBolsa()">Agregar a la bolsa</button>
+    <div class="nota">*Consulta Términos y Condiciones</div>
+  </div>
+
+  
+
+<script>
+
+  const presentacion = document.getElementById("presentacion");
+const frascos = document.getElementById("frascos");
+const precio = document.getElementById("precio");
+
+const precios = {
+  "30": 200,
+  "60": 300,
+  "100": 400
+};
+
+function actualizarPrecio() {
+  const valorCapsulas = presentacion.value;
+  const cantidadFrascos = parseInt(frascos.value);
+  const precioFinal = precios[valorCapsulas] * cantidadFrascos;
+  precio.textContent = `$${precioFinal.toFixed(2)} MXN`;
+}
+
+presentacion.addEventListener("change", actualizarPrecio);
+frascos.addEventListener("change", actualizarPrecio);
+
+
+function agregarBolsa() {
+  // 👇 Validación de sesión
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  if (!isLoggedIn) {
+    alert("Debes iniciar sesión para agregar productos a la bolsa.");
+    window.location.href = "login.html"; // redirige al login
+    return;
+  }
+
+  const cantidadCapsulas = presentacion.value;          // "30" | "60" | "100"
+  const cantidadFrascos = parseInt(frascos.value, 10);  // número de frascos
+
+  const precios = { "30": 200, "60": 300, "100": 400 };
+  const precioUnitario = precios[cantidadCapsulas];
+  const precioFinal = precioUnitario * cantidadFrascos;
+
+  // Guardar todo en localStorage
+  localStorage.setItem("producto", `Colágeno Hidrolizado de ${cantidadCapsulas} cápsulas`);
+  localStorage.setItem("capsulas", cantidadCapsulas.toString());
+  localStorage.setItem("frascos", cantidadFrascos.toString());
+  localStorage.setItem("precioUnitario", precioUnitario.toString());
+  localStorage.setItem("precio", precioFinal.toString());
+
+  // Redirigir
+  window.location.href = "resumen.html";
+}
+
+
+</script>
+
+     <script src="app.js"></script>

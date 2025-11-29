@@ -9,6 +9,7 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      background-color: #f0f8f5;
     }
 
     header {
@@ -58,7 +59,6 @@
       color: white;
     }
 
-    /* Menú de usuario */
     .user-menu {
       position: relative;
       margin-left: 20px;
@@ -97,12 +97,19 @@
       font-weight: bold;
     }
 
+ 
+
+.user-dropdown.show {
+  display: block; /* se muestra cuando se activa */
+}
+
+ 
+
     .user-dropdown li a:hover {
       background-color: #f0f8f5;
     }
 
     main {
-      background-color: #f0f8f5;
       padding: 40px 30px;
     }
 
@@ -176,12 +183,24 @@
       background-color: #f0f8f5;
     }
 
+    #faqColageno h2 {
+      text-align: center;
+      color: #2e7d32;
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+
     .faq-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 30px;
-      margin-top: 30px;
       text-align: left;
+    }
+
+    .faq-grid img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
     }
 
     .faq-grid h3 {
@@ -191,41 +210,80 @@
 
     .faq-grid p {
       margin: 0;
+      font-size: 15px;
+      color: #333;
+    }
+
+    footer {
+      background-color: #f3fcf9;
+      border-top: 2px solid #2e7d32;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    footer img {
+      height: 100px;
+      margin-bottom: 10px;
+    }
+
+    footer p {
+      margin: 5px 0;
+    }
+
+    footer p:first-of-type {
+      font-size: 18px;
+      color: #2e7d32;
+      font-weight: bold;
+    }
+
+    footer p:nth-of-type(2) {
+      font-size: 16px;
+      color: #555;
+    }
+
+    footer p:last-of-type {
+      font-size: 13px;
+      color: #999;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
-  <header>
-    <a href="index.html">
-      <img src="img/logo.png" alt="Logo Biomagnutri">
-    </a>
-    <div class="nav-container">
-      <ul class="nav-left">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="nosotros.html">Nosotros</a></li>
-        <li><a href="contacto.html">Contáctanos</a></li>
+  <header style="display: flex; justify-content: space-between; align-items: center; padding: 20px;">
+  <a href="index.html">
+    <img src="img/logo.png" alt="Logo Biomagnutri" style="height: 60px;">
+  </a>
+
+  <div class="nav-container" style="display: flex; gap: 30px; align-items: center;">
+    <ul class="nav-left" style="display: flex; gap: 20px; list-style: none; margin: 0;">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="contacto.html">Contáctanos</a></li>
+    </ul>
+
+    <ul class="nav-right" style="display: flex; gap: 20px; list-style: none; margin: 0;">
+      <li><a href="login.html">Inicia sesión</a></li>
+      <li><a href="registro.html">Regístrate</a></li>
+    </ul>
+
+    <div class="user-menu" id="userMenu" style="display: none; position: relative;">
+      <button id="userNameBtn" style="background-color: #2e7d32; color: white; border: none; border-radius: 50px; padding: 10px 20px; font-weight: bold; cursor: pointer;">
+        Nombre
+      </button>
+      <ul class="user-dropdown" id="userDropdown">
+        <li><a href="perfil.html">Administrar perfil</a></li>
+        <li><a href="#" id="logoutBtn">Cerrar sesión</a></li>
       </ul>
-      <ul class="nav-right">
-        <li><a href="login.html">Inicia sesión</a></li>
-        <li><a href="registro.html">Regístrate</a></li>
-      </ul>
-      <!-- Menú de usuario -->
-      <div class="user-menu" id="userMenu" style="display: none;">
-        <button id="userNameBtn">Nombre</button>
-        <ul class="user-dropdown" id="userDropdown">
-          <li><a href="perfil.html">Administrar perfil</a></li>
-          <li><a href="#" id="logoutBtn">Cerrar sesión</a></li>
-        </ul>
-      </div>
     </div>
-  </header>
+  </div>
+</header>
 
   <main>
     <div class="main-content">
       <div class="main-text">
         <h2>Belleza y salud</h2>
         <p>Colágeno hidrolizado: nutrición inteligente, resultados visibles.</p>
-        <button class="boton-comprar" onclick="location.href='registro.html'">Comprar</button>
+        <button class="boton-comprar" onclick="location.href='comprar.html'">Comprar</button>
         <div class="texto-secundario">Regístrate y compra hoy mismo</div>
       </div>
       <div class="main-image">
@@ -234,50 +292,66 @@
     </div>
   </main>
 
-  <section id="faqColageno">
-    <h2>Preguntas frecuentes sobre el colágeno hidrolizado</h2>
-    <div class="faq-grid">
+ <section id="faqColageno">
+  <h2>Preguntas frecuentes sobre el colágeno hidrolizado</h2>
+  <div class="faq-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+    <div style="display: flex; gap: 20px; align-items: flex-start;">
+      <img src="img/pf1.png" alt="¿Qué es el colágeno?" style="max-height: 120px; width: auto; object-fit: contain; border-radius: 10px;">
       <div>
         <h3>¿Qué es el Colágeno Hidrolizado?</h3>
-        <p>Es una forma fácil de agregar más colágeno a tu dieta. Se disuelve rápidamente en agua y se absorbe fácilmente gracias al proceso de hidrolización.</p>
-      </div>
-      <div>
-        <h3>¿Para qué sirve?</h3>
-        <p>Ayuda a mantener la estructura de la piel, articulaciones y huesos. Es especialmente útil en la edad adulta.</p>
-      </div>
-      <div>
-        <h3>¿Quién lo puede tomar?</h3>
-        <p>Adultos sanos desde los 25 años, deportistas, adultos mayores y quienes buscan mejorar su bienestar.</p>
-      </div>
-      <div>
-        <h3>¿Cuentan con envíos?</h3>
-        <p>Sí, hacemos envíos a todo el país y entregas locales en Aguascalientes.</p>
+        <p>El colágeno hidrolizado es una forma fácil de agregar más colágeno a tu dieta. No tiene sabor, no huele y se disuelve fácilmente en casi cualquier líquido, gracias al proceso de hidrólisis. Este proceso rompe el colágeno en pequeños péptidos, lo que facilita su absorción.</p>
       </div>
     </div>
-  </section>
+    <div style="display: flex; gap: 20px; align-items: flex-start;">
+      <img src="img/pf2.png" alt="¿Para qué sirve?" style="max-height: 120px; width: auto; object-fit: contain; border-radius: 10px;">
+      <div>
+        <h3>¿Para qué sirve?</h3>
+        <p>El colágeno hidrolizado sirve como catalizador del crecimiento de tejidos conectivos. Es recomendado para la inmensa mayoría de los tejidos.</p>
+      </div>
+    </div>
+    <div style="display: flex; gap: 20px; align-items: flex-start;">
+      <img src="img/pf3.png" alt="¿Quién lo puede tomar?" style="max-height: 120px; width: auto; object-fit: contain; border-radius: 10px;">
+      <div>
+        <h3>¿Quién lo puede tomar?</h3>
+        <p>Adultos sanos a partir de los 25 años, especialmente si practican algún deporte o tienen problemas articulares como rodilla y cadera. Si eres adulto mayor, diabético, celíaco o estás en proceso de pérdida de peso, consulta a tu médico antes.</p>
+      </div>
+    </div>
+    <div style="display: flex; gap: 20px; align-items: flex-start;">
+      <img src="img/pf4.png" alt="¿Cuentan con envíos?" style="max-height: 120px; width: auto; object-fit: contain; border-radius: 10px;">
+      <div>
+        <h3>¿Cuentan con envíos?</h3>
+        <p>Sí contamos con envíos nacionales e internacionales desde el centro de distribución de Aguascalientes. Recibe tu pedido donde estés.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="testimonios" style="background-color: #f0f8f5; padding: 60px 30px;">
+  <h2 style="color: #2e7d32; font-size: 28px; text-align: center; margin-bottom: 40px;">Testimonios</h2>
+  <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; max-width: 1000px; margin: auto;">
+    <div style="flex: 1; min-width: 280px; max-width: 500px; padding: 20px;">
+      <h3 style="color: #2e7d32; font-size: 20px;">Testimonio de uno de nuestros clientes</h3>
+      <p style="font-size: 16px; color: #333; margin-top: 15px; line-height: 1.6;">
+        “Hace tres semanas empecé a tomar el colágeno hidrolizado de <strong>BIOMAGNUTRI</strong> y ya noto cambios en mi piel: se siente más suave y firme. También he notado menos dolor en mis rodillas al hacer ejercicio. Me encanta que sea fácil de preparar y que no tenga sabor fuerte. ¡Lo recomiendo totalmente!”
+      </p>
+      <p style="font-weight: bold; color: #2e7d32; margin-top: 20px;">Juana López</p>
+      <p style="font-size: 14px; color: #666;">3 meses tomando colágeno de Biomagnutri</p>
+    </div>
+    <div style="flex: 1; min-width: 280px; text-align: center;">
+      <img src="img/fto.jpg" alt="Testimonio cliente" style="max-width: 300px; border-radius: 12px;">
+    </div>
+  </div>
+</section>
 
-  <script>
-    // Simulación de sesión iniciada
-    const user = {
-      nombre: "Alberto",
-      rol: "admin"
-    };
+<section id="mensaje-promocional" style="background-color: #f3fcf9; padding: 40px 30px; text-align: center;">
+  <p style="font-size: 20px; color: #2e7d32; max-width: 800px; margin: auto; line-height: 1.6;">
+    El colágeno hidrolizado de <strong>Biomagnutri</strong> es la elección ideal para quienes buscan cuidar su piel, articulaciones y bienestar desde adentro.
+  </p>
+</section>
 
-    const userMenu = document.getElementById("userMenu");
-    const userNameBtn = document.getElementById("userNameBtn");
-    const userDropdown = document.getElementById("userDropdown");
-    const logoutBtn = document.getElementById("logoutBtn");
+  <footer style="background-color: #ccf3ce; border-top: 0px solid #a7e9aa; padding: 80px 40px; text-align: center;">
+  <img src="img/logo.png" alt="Logo Biomagnutri" style="height: 100px; margin-bottom: 10px;">
+  <p style="font-size: 13px; color: #999; margin-top: 10px;">© 2023 Biomagnutri S.A. de C.V. Todos los derechos reservados.</p>
+</footer>
 
-    // Mostrar nombre y menú si hay sesión
-    if (user) {
-      userMenu.style.display = "block";
-      userNameBtn.textContent = user.nombre;
-    }
-
-    // Toggle del menú desplegable
-    userNameBtn.addEventListener("click", () => {
-      userDropdown.style.display = userDropdown.style.display === "block" ? "none" : "block";
-    });
-
-    // Cerrar sesión
-    logoutBtn.addEvent
+<script src="app.js"></script>
+</body>

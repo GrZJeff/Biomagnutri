@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Administrar Perfil | Biomagnutri</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3fcf9;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 30px;
+      background-color: #f3fcf9;
+      border-bottom: 2px solid #2e7d32;
+    }
+    header img { height: 100px; }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      flex-grow: 1;
+      margin-left: 20px;
+      align-items: center;
+    }
+    .nav-left, .nav-right {
+      display: flex;
+      gap: 15px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-left li a, .nav-right li a {
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: bold;
+      padding: 8px 16px;
+      border: 2px solid #2e7d32;
+      border-radius: 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .nav-left li a:hover, .nav-right li a:hover {
+      background-color: #2e7d32;
+      color: white;
+    }
+
+    .user-menu {
+      position: relative;
+      margin-left: 20px;
+      display: none; /* oculto por defecto */
+    }
+    .user-menu button {
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      font-weight: bold;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+    .user-dropdown {
+      position: absolute;
+      top: 40px;
+      right: 0;
+      background-color: white;
+      border: 2px solid #2e7d32;
+      border-radius: 10px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: none;
+      width: 180px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .user-dropdown.show { display: block; }
+    .user-dropdown li a {
+      display: block;
+      padding: 10px;
+      color: #2e7d32;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .user-dropdown li a:hover { background-color: #f0f8f5; }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: white;
+      border: 2px solid #2e7d32;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #2e7d32;
+      margin-bottom: 20px;
+      font-size: 28px;
+      text-align: center;
+    }
+
+    label {
+      font-weight: bold;
+      color: #2e7d32;
+      display: block;
+      margin-top: 15px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border: 2px solid #2e7d32;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    .btn-guardar {
+      margin-top: 30px;
+      padding: 12px 24px;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: 100%;
+    }
+    .btn-guardar:hover {
+      background-color: white;
+      color: #2e7d32;
+      border: 2px solid #2e7d32;
+    }
+
+    footer {
+      background-color: #ccf3ce;
+      padding: 60px 30px;
+      text-align: center;
+      border-top: 0;
+    }
+    footer img { height: 100px; margin-bottom: 10px; }
+    footer p { font-size: 13px; color: #999; margin-top: 10px; }
+  </style>
+</head>
+<body>
+ <header>
+  <a href="index.html">
+    <img src="img/logo.png" alt="Logo Biomagnutri">
+  </a>
+  <div class="nav-container">
+    <ul class="nav-left">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="contacto.html">Contáctanos</a></li>
+      <li><a href="comprar.html">Comprar</a></li>
+    </ul>
+    <ul class="nav-right">
+      <li><a href="login.html">Inicia sesión</a></li>
+      <li><a href="registro.html">Regístrate</a></li>
+    </ul>
+    <div class="user-menu" id="userMenu" style="display:none;">
+      <button id="userNameBtn">Nombre</button>
+      <ul class="user-dropdown" id="userDropdown">
+        <li><a href="perfil.html">Administrar perfil</a></li>
+        <li><a href="#" id="logoutBtn">Cerrar sesión</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+  <div class="container">
+    <h1>Administrar Perfil</h1>
+    <form id="perfilForm">
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <label for="email">Correo electrónico</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="telefono">Teléfono</label>
+      <input type="tel" id="telefono" name="telefono" required>
+
+      <button type="submit" class="btn-guardar">Guardar cambios</button>
+    </form>
+  </div>
+
+  <footer>
+    <img src="img/logo.png" alt="Logo Biomagnutri">
+    <p>© 2023 Biomagnutri S.A. de C.V. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const perfilForm = document.getElementById("perfilForm");
+
+      // Prellenar con datos guardados en localStorage
+      document.getElementById("nombre").value = localStorage.getItem("name") || "";
+      document.getElementById("email").value = localStorage.getItem("email") || "";
+      document.getElementById("telefono").value = localStorage.getItem("telefono") || "";
+
+      perfilForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const nombre = document.getElementById("nombre").value;
+        const email = document.getElementById("email").value;
+        const telefono = document.getElementById("telefono").value;
+
+        // Guardar en localStorage (puedes cambiar esto a una petición al backend)
+        localStorage.setItem("name", nombre);
+        localStorage.setItem("email", email);
+        localStorage.setItem("telefono", telefono);
+
+        alert("Perfil actualizado correctamente");
+        window.location.href = "index.html"; // Regresar al inicio
+      });
+    });
+  </script>
+</body>
+</html>

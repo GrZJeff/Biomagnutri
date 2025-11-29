@@ -4,32 +4,168 @@
   <meta charset="UTF-8">
   <title>Panel Administrador | Biomagnutri</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Layout base */
+
+.user-menu {
+  position: relative;
+  margin-left: 20px;
+  display: none; /* oculto por defecto */
+}
+
+.user-menu button {
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.user-dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: white;
+  border: 2px solid #2e7d32;
+  border-radius: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+  width: 180px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.user-dropdown li a {
+  display: block;
+  padding: 10px;
+  color: #2e7d32;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.user-dropdown li a:hover {
+  background-color: #f0f8f5;
+}
+
+.user-dropdown.show {
+  display: block;
+}
+
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+      background-color: #f3fcf9;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 30px;
+      background-color: #f3fcf9;
+      border-bottom: 2px solid #2e7d32;
+    }
+    header img { height: 100px; }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      flex-grow: 1;
+      margin-left: 20px;
+      align-items: center;
+    }
+    .nav-left, .nav-right {
+      display: flex; gap: 15px; list-style: none; margin: 0; padding: 0;
+    }
+    .nav-left li a, .nav-right li a {
+      text-decoration: none; color: #2e7d32; font-weight: bold;
+      padding: 8px 16px; border: 2px solid #2e7d32; border-radius: 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .nav-left li a:hover, .nav-right li a:hover {
+      background-color: #2e7d32; color: white;
+    }
+
+    /* Main ocupa el espacio disponible */
+    main {
+      flex: 1;
+      text-align: center;
+      padding: 40px;
+    }
+    main h2 { color: #2e7d32; }
+    .panel-buttons {
+      display: flex; justify-content: center; gap: 30px;
+      flex-wrap: wrap; margin-top: 30px;
+    }
+    .panel-buttons button {
+      padding: 12px 20px; border: 2px solid #2e7d32; border-radius: 10px;
+      background-color: #2e7d32; color: white; font-weight: bold; cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .panel-buttons button:hover {
+      background-color: white; color: #2e7d32;
+    }
+
+    /* Footer siempre al fondo */
+    footer {
+      background-color: #ccf3ce;
+      padding: 80px 40px;
+      text-align: center;
+    }
+    footer img { height: 100px; margin-bottom: 10px; }
+    footer p { font-size: 13px; color: #999; margin-top: 10px; }
+  </style>
 </head>
 <body>
   <header>
-    <nav>
-      <ul class="nav">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="nosotros.html">Nosotros</a></li>
-        <li><a href="contacto.html">Contáctanos</a></li>
-        <li><a href="login.html">Inicia sesión</a></li>
-        <li><a href="registro.html">Regístrate</a></li>
+  <a href="index.html">
+    <img src="img/logo.png" alt="Logo Biomagnutri">
+  </a>
+  <div class="nav-container">
+    <ul class="nav-left">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="contacto.html">Contáctanos</a></li>
+    </ul>
+    <ul class="nav-right">
+      <li><a href="login.html">Inicia sesión</a></li>
+      <li><a href="registro.html">Regístrate</a></li>
+    </ul>
+    <!-- 👇 Nuevo bloque -->
+    <div class="user-menu" id="userMenu" style="display:none;">
+      <button id="userNameBtn">Nombre</button>
+      <ul class="user-dropdown" id="userDropdown">
+        <li><a href="perfil.html">Administrar perfil</a></li>
+        <li><a href="#" id="logoutBtn">Cerrar sesión</a></li>
       </ul>
-    </nav>
-    <h1 style="text-align: center; margin-top: 30px;">Bienvenida Magali</h1>
-    <div style="text-align: center; margin-top: 10px;">
-      <button id="logoutBtn">Cerrar sesión</button>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main style="text-align: center; padding: 40px;">
+  <main>
+    <h1 style="margin-top: 20px; color:#2e7d32;">Bienvenida Magali</h1>
+
+
     <h2>Panel de Control</h2>
-    <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 30px;">
+    <div class="panel-buttons">
       <button onclick="location.href='usuarios.html'">👥 Visualizar usuarios nuevos</button>
       <button onclick="location.href='compras.html'">🛒 Compras totales</button>
       <button onclick="location.href='agregar-producto.html'">➕ Agregar producto</button>
     </div>
   </main>
+
+  <footer>
+    <img src="img/logo.png" alt="Logo Biomagnutri">
+    <p>© 2023 Biomagnutri S.A. de C.V. Todos los derechos reservados.</p>
+  </footer>
 
   <script src="app.js"></script>
 </body>

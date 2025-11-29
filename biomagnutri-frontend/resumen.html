@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Resumen de compra | Biomagnutri</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3fcf9;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 30px 30px;
+      background-color: #f3fcf9;
+      border-bottom: 2px solid #2e7d32;
+    }
+
+    header img { height: 100px; }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      flex-grow: 1;
+      margin-left: 20px;
+      align-items: center;
+    }
+
+    .nav-left, .nav-right {
+      display: flex;
+      gap: 15px;
+      list-style: none;
+      margin: 0; padding: 0;
+    }
+
+    .nav-left li a, .nav-right li a {
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: bold;
+      padding: 8px 16px;
+      border: 2px solid #2e7d32;
+      border-radius: 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .nav-left li a:hover, .nav-right li a:hover {
+      background-color: #2e7d32; color: white;
+    }
+
+    .user-menu { position: relative; margin-left: 20px; }
+    .user-menu button {
+      background-color: #2e7d32; color: white; border: none;
+      padding: 8px 16px; font-weight: bold; border-radius: 20px; cursor: pointer;
+    }
+    .user-dropdown {
+      position: absolute; top: 40px; right: 0; background-color: white;
+      border: 2px solid #2e7d32; border-radius: 10px; list-style: none;
+      padding: 0; margin: 0; display: none; width: 180px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .user-dropdown li a { display: block; padding: 10px; color: #2e7d32; text-decoration: none; font-weight: bold; }
+    .user-dropdown li a:hover { background-color: #f0f8f5; }
+
+    .container {
+      max-width: 1000px; margin: 40px auto; background-color: white;
+      border: 2px solid #2e7d32; border-radius: 12px; padding: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h2 { color: #2e7d32; margin-bottom: 20px; }
+
+    .resumen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+
+    .bolsa, .resumen { border: 1px solid #2e7d32; border-radius: 10px; padding: 20px; }
+    .bolsa h3, .resumen h3 { color: #2e7d32; margin-top: 0; }
+
+    .bolsa-item {
+      display: grid; grid-template-columns: 120px 1fr; gap: 16px; align-items: center;
+    }
+    .bolsa-item img {
+      width: 120px; height: auto; border: 1px solid #2e7d32; border-radius: 8px; background: #f7fff9;
+    }
+
+    .bolsa p, .resumen p { font-size: 16px; margin: 8px 0; color: #333; }
+
+    .form-section { margin-top: 20px; }
+    .form-section label {
+      font-weight: bold; color: #2e7d32; display: block; margin-bottom: 8px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+    .form-section select, .form-section input {
+      width: 100%; padding: 10px; border: 2px solid #2e7d32; border-radius: 10px;
+      margin-bottom: 15px; font-size: 15px;
+    }
+
+    .tarjeta-form { display: none; margin-top: 10px; }
+    .tarjeta-form input { width: 100%; padding: 10px; border: 2px solid #2e7d32; border-radius: 10px; margin-bottom: 10px; font-size: 15px; }
+
+    .total { font-size: 20px; font-weight: bold; color: #2e7d32; margin-top: 12px; }
+
+    .pago-opciones { margin-top: 20px; font-size: 14px; color: #555; }
+
+    .btn-finalizar {
+      margin-top: 30px; padding: 12px 24px; background-color: #2e7d32; color: white;
+      border: none; border-radius: 20px; font-size: 16px; font-weight: bold; cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .btn-finalizar:hover { background-color: white; color: #2e7d32; border: 2px solid #2e7d32; }
+
+    footer { background-color: #ccf3ce; padding: 80px 40px; text-align: center; }
+    footer img { height: 100px; margin-bottom: 10px; }
+    footer p { font-size: 13px; color: #999; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html"><img src="img/logo.png" alt="Logo Biomagnutri"></a>
+    <div class="nav-container">
+      <ul class="nav-left">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="contacto.html">Contáctanos</a></li>
+      </ul>
+      <ul class="nav-right">
+        <li><a href="login.html">Inicia sesión</a></li>
+        <li><a href="registro.html">Regístrate</a></li>
+      </ul>
+      <div class="user-menu" id="userMenu" style="display: none;">
+        <button id="userNameBtn">Nombre</button>
+        <ul class="user-dropdown" id="userDropdown">
+          <li><a href="perfil.html">Administrar perfil</a></li>
+          <li><a href="#" id="logoutBtn">Cerrar sesión</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <h2>Resumen de compra</h2>
+    <div class="resumen-grid">
+      <div class="bolsa">
+        <h3>BOLSA DE COMPRAS</h3>
+        <div class="bolsa-item">
+          <img id="productoImg" src="img/frasco.png" alt="Colágeno Hidrolizado">
+          <div>
+            <p id="producto"></p>
+            <p id="frascos"></p>  
+            <p id="cantidad"></p>
+            <p id="precio"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="resumen">
+        <h3>RESUMEN DE COMPRA</h3>
+        <p id="subtotal"></p>
+        <p>IVA: $0.00</p>
+        <p class="total" id="total"></p>
+
+        <!-- Opción de envío -->
+        <div class="form-section">
+          <label for="envio">Opción de envío:</label>
+          <select id="envio">
+            <option value="nacional">Envío nacional</option>
+            <option value="domicilio">Entrega a domicilio</option>
+          </select>
+        </div>
+
+        <!-- Dirección de envío -->
+        <div class="form-section">
+          <label>Dirección de envío:</label>
+          <input type="text" id="direccion" placeholder="Dirección">
+          <div class="form-row">
+            <input type="text" id="codigoPostal" placeholder="Código Postal">
+            <input type="text" id="calle" placeholder="Calle">
+          </div>
+          <div class="form-row">
+            <input type="text" id="fraccionamiento" placeholder="Fraccionamiento">
+            <input type="text" id="ciudad" placeholder="Ciudad">
+          </div>
+        </div>
+
+        <!-- Método de pago -->
+        <div class="form-section">
+          <label for="metodoPago">Método de pago:</label>
+          <select id="metodoPago">
+            <option value="" selected>Selecciona un método</option>
+            <option value="tarjeta">Tarjeta de débito/crédito</option>
+            <option value="paypal">PayPal</option>
+            <option value="oxxo">Pago en OXXO</option>
+          </select>
+
+          <!-- Formulario tarjeta -->
+          <div id="tarjetaForm" class="tarjeta-form">
+            <label>Detalles de la tarjeta:</label>
+            <input type="text" id="numTarjeta" placeholder="Número de tarjeta (16 dígitos)" maxlength="19">
+            <div class="form-row">
+              <input type="text" id="fechaVenc" placeholder="MM/AA" maxlength="5">
+              <input type="text" id="cvv" placeholder="CVV" maxlength="4">
+            </div>
+          </div>
+        </div>
+
+        <div class="pago-opciones">
+          <p>Paga en hasta 12 quincenas con <strong>KueskiPay</strong>, sin comisiones ocultas. Conócelos.</p>
+          <p>Paga en 5 plazos de <strong>$81.08</strong> con <strong>Aplazo</strong>.</p>
+        </div>
+
+        <button class="btn-finalizar" onclick="finalizarCompra()">Finalizar compra</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Simulación de sesión
+    
+function agregarBolsa() {
+  const capsulas = presentacion.value;          // "30" | "60" | "100"
+  const frascos = parseInt(frascosSelect.value, 10); // 1..10
+
+  const precios = { "30": 200, "60": 300, "100": 400 };
+  const precioUnitario = precios[capsulas];     // precio por frasco
+  const total = precioUnitario * frascos;
+
+  localStorage.setItem("producto", `Colágeno Hidrolizado de ${capsulas} cápsulas`);
+  localStorage.setItem("capsulas", capsulas);          // 👈 nuevo
+  localStorage.setItem("frascos", String(frascos));    // 👈 asegúrate de guardar como string
+  localStorage.setItem("precioUnitario", String(precioUnitario)); // 👈 nuevo
+  localStorage.setItem("precio", String(total));       // total
+
+  window.location.href = "resumen.html";
+}
+
+
+    // Cargar datos del carrito
+const producto = localStorage.getItem("producto") || "Colágeno Hidrolizado";
+const capsulas = localStorage.getItem("capsulas") || "100";
+const frascos = parseInt(localStorage.getItem("frascos") || "1", 10);
+const precioUnitario = parseFloat(localStorage.getItem("precioUnitario")) || 400;
+
+
+const total = precioUnitario * frascos;
+
+
+
+document.getElementById("producto").textContent = producto;
+document.getElementById("frascos").textContent = `Frascos: ${frascos}`;
+document.getElementById("cantidad").textContent = `Cantidad cápsulas: ${capsulas}`;
+document.getElementById("precio").textContent = `Precio por frasco: $${precioUnitario.toFixed(2)} MXN`;
+document.getElementById("subtotal").textContent = `Subtotal: $${total.toFixed(2)} MXN`;
+document.getElementById("total").textContent = `TOTAL: $${total.toFixed(2)} MXN`;
+
+    // Mostrar/ocultar formulario de tarjeta según método de pago
+    const metodoPago = document.getElementById("metodoPago");
+    const tarjetaForm = document.getElementById("tarjetaForm");
+    metodoPago.addEventListener("change", () => {
+      tarjetaForm.style.display = metodoPago.value === "tarjeta" ? "block" : "none";
+    });
+
+    // Formateo básico de número de tarjeta (#### #### #### ####)
+    const numTarjeta = document.getElementById("numTarjeta");
+    numTarjeta.addEventListener("input", (e) => {
+      let v = e.target.value.replace(/\D/g, "").slice(0,16);
+      e.target.value = v.replace(/(\d{4})(?=\d)/g, "$1 ");
+    });
+
+    // Formateo básico MM/AA
+    const fechaVenc = document.getElementById("fechaVenc");
+    fechaVenc.addEventListener("input", (e) => {
+      let v = e.target.value.replace(/\D/g, "").slice(0,4);
+      if (v.length >= 3) v = v.slice(0,2) + "/" + v.slice(2);
+      e.target.value = v;
+    });
+
+    // Finalizar compra (validación mínima)
+    function finalizarCompra() {
+      const envio = document.getElementById("envio").value;
+      const direccion = document.getElementById("direccion").value.trim();
+      const cp = document.getElementById("codigoPostal").value.trim();
+      const calle = document.getElementById("calle").value.trim();
+      const fracc = document.getElementById("fraccionamiento").value.trim();
+      const ciudad = document.getElementById("ciudad").value.trim();
+      const metodo = metodoPago.value;
+
+      if (!direccion || !cp || !calle || !fracc || !ciudad) {
+        alert("Por favor completa la dirección de envío.");
+        return;
+      }
+
+      if (metodo === "") {
+        alert("Selecciona un método de pago.");
+        return;
+      }
+
+      if (metodo === "tarjeta") {
+        const tarjeta = numTarjeta.value.replace(/\s/g, "");
+        const venc = fechaVenc.value;
+        const cvv = document.getElementById("cvv").value.trim();
+
+        if (tarjeta.length !== 16 || !/^\d{16}$/.test(tarjeta)) {
+          alert("Número de tarjeta inválido (deben ser 16 dígitos).");
+          return;
+        }
+        if (!/^\d{2}\/\d{2}$/.test(venc)) {
+          alert("Fecha de vencimiento inválida (usa MM/AA).");
+          return;
+        }
+        if (!/^\d{3,4}$/.test(cvv)) {
+          alert("CVV inválido (3 o 4 dígitos).");
+          return;
+        }
+      }
+
+      alert("Gracias por tu compra. Recibirás un correo con los detalles.");
+      localStorage.clear();
+      window.location.href = "comprafinalizada.html";
+    }
+  </script>
+  
+
+  <footer>
+    <img src="img/logo.png" alt="Logo Biomagnutri">
+    <p>© 2023 Biomagnutri S.A. de C.V. Todos los derechos reservados.</p>
+  </footer>
+</body>
+<script src="app.js"></script>
+</html>
+

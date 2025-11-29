@@ -61,7 +61,7 @@
       color: white;
     }
 
-    /* Layout del main (CORREGIDO Y CENTRADO) */
+    /* Layout del main */
     main {
       display: flex;
       justify-content: center;
@@ -142,6 +142,24 @@
       max-width: 100%;
       height: auto;
     }
+
+    /* Footer */
+    footer {
+      background-color: #ccf3ce;
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    footer img {
+      height: 100px;
+      margin-bottom: 10px;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: #999;
+      margin-top: 10px;
+    }
   </style>
 </head>
 
@@ -173,13 +191,14 @@
         <input type="email" id="loginEmail" placeholder="abc@gmail.com" required>
         <input type="password" id="loginPassword" placeholder="Contraseña" required>
 
+        <!-- Corregido: roles que coinciden con backend -->
         <select id="loginRole" required>
           <option value="" disabled selected>Selecciona tu rol</option>
-          <option value="usuario">Usuario</option>
+          <option value="user">Usuario</option>
           <option value="admin">Administrador</option>
         </select>
 
-        <a href="#">¿Olvidaste tu contraseña?</a>
+        <a href="resetpass.html">¿Olvidaste tu contraseña?</a>
 
         <button type="submit">Ingresar</button>
 
@@ -193,5 +212,10 @@
   </main>
 
   <script src="app.js"></script>
+
+  <footer>
+    <img src="img/logo.png" alt="Logo Biomagnutri">
+    <p>© 2023 Biomagnutri S.A. de C.V. Todos los derechos reservados.</p>
+  </footer>
 </body>
 </html>

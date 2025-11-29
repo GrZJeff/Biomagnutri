@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Restablecer Contraseña | Biomagnutri</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f8f5;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 30px 30px;
+      background-color: #f0f8f5;
+      border-bottom: 2px solid #2e7d32;
+    }
+
+    header img {
+      height: 100px;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      flex-grow: 1;
+      margin-left: 20px;
+    }
+
+    .nav-left, .nav-right {
+      display: flex;
+      gap: 15px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-left li a,
+    .nav-right li a {
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: bold;
+      padding: 8px 16px;
+      border: 2px solid #2e7d32;
+      border-radius: 20px;
+      transition: 0.3s;
+    }
+
+    .nav-left li a:hover,
+    .nav-right li a:hover {
+      background-color: #2e7d32;
+      color: white;
+    }
+
+    /* MAIN CENTRADO */
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 80px;
+      padding: 40px 30px;
+      flex-wrap: wrap;
+    }
+
+    /* Sección del formulario */
+    .form-section {
+      flex: 0 1 400px;
+      text-align: center;
+    }
+
+    .form-section h2 {
+      font-size: 28px;
+      color: black;
+      margin-bottom: 25px;
+      font-weight: bold;
+    }
+
+    /* Formulario */
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    input {
+      width: 280px;
+      padding: 12px;
+      border: 2px solid #cfd9d5;
+      border-radius: 10px;
+      font-size: 16px;
+      background-color: #ffffff;
+    }
+
+    input:focus {
+      border-color: #2e7d32;
+      outline: none;
+    }
+
+    button {
+      width: 280px;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 17px;
+      background-color: #86c693;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #2e7d32;
+    }
+
+    /* Link de login */
+    .login-link {
+      margin-top: 5px;
+      font-size: 15px;
+      color: #2e7d32;
+      text-decoration: underline;
+    }
+
+    /* Imagen */
+    .image-section {
+      flex: 0 1 450px;
+      text-align: center;
+      min-width: 500px;
+    }
+
+    .image-section img {
+      width: 90%;
+      max-width: 650px;
+      height: auto;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html">
+      <img src="img/logo.png" alt="Logo Biomagnutri">
+    </a>
+
+    <div class="nav-container">
+      <ul class="nav-left">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="contacto.html">Contáctanos</a></li>
+      </ul>
+
+      <ul class="nav-right">
+        <li><a href="login.html">Inicia sesión</a></li>
+        <li><a href="registro.html">Regístrate</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <!-- FORMULARIO DE RESTABLECIMIENTO -->
+    <div class="form-section">
+      <h2>Restablecer Contraseña</h2>
+
+      <!-- Paso 1: ingresar correo -->
+      <form id="resetForm">
+        <input type="email" id="email" placeholder="Correo electrónico" required>
+        <button type="submit">Enviar código</button>
+      </form>
+
+      <!-- Paso 2: ingresar código -->
+      <form id="verifyForm" style="display:none;">
+        <input type="text" id="code" placeholder="Código de verificación" required>
+        <button type="submit">Verificar código</button>
+      </form>
+
+      <!-- Paso 3: nueva contraseña -->
+      <form id="newPassForm" style="display:none;">
+        <input type="password" id="newPassword" placeholder="Nueva contraseña" required>
+        <button type="submit">Restablecer contraseña</button>
+      </form>
+
+      <a class="login-link" href="login.html">¿Ya tienes cuenta? Inicia sesión</a>
+    </div>
+
+    <!-- IMAGEN -->
+    <div class="image-section">
+      <img src="img/frascoagua.png" alt="Frasco de colágeno hidrolizado con agua">
+    </div>
+  </main>
+
+  <script src="resetpass.js"></script>
+
+  <!-- FOOTER -->
+  <footer style="background-color: #ccf3ce; border-top: 0px solid #a7e9aa; padding: 80px 40px; text-align: center;">
+    <img src="img/logo.png" alt="Logo Biomagnutri" style="height: 100px; margin-bottom: 10px;">
+    <p style="font-size: 13px; color: #999; margin-top: 10px;">© 2023 Biomagnutri S.A. de C.V. Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+</html>

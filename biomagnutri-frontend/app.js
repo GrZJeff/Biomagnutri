@@ -2,7 +2,6 @@ const API_URL = "http://localhost:5000/api";
 let token = localStorage.getItem("token") || "";
 let role = localStorage.getItem("role") || "";
 
-// ------------------ Registro ------------------
 const registerForm = document.getElementById("registerForm");
 if (registerForm) {
   registerForm.addEventListener("submit", async (e) => {
@@ -22,7 +21,6 @@ if (registerForm) {
   });
 }
 
-// ------------------ Login ------------------
 const loginForm = document.getElementById("loginForm");
 if (loginForm) {
   loginForm.addEventListener("submit", async (e) => {
@@ -43,13 +41,21 @@ if (loginForm) {
       role = data.user.role;
       localStorage.setItem("token", token);
       localStorage.setItem("role", role);
+      localStorage.setItem("name", data.user.name);
+      localStorage.setItem("email", data.user.email);
+
+      localStorage.setItem("isLoggedIn", "true");
+
+
+
+
 
       alert("Login exitoso");
 
       if (role === "admin") {
         window.location.href = "admin.html";
       } else {
-        window.location.href = "productos.html";
+        window.location.href = "index.html";
       }
     } else {
       alert(data.message);
@@ -57,7 +63,6 @@ if (loginForm) {
   });
 }
 
-// ------------------ Productos (solo usuarios) ------------------
 const productFormUser = document.getElementById("productForm");
 if (productFormUser && role === "user") {
   if (!token) {
@@ -105,7 +110,6 @@ if (productFormUser && role === "user") {
   loadProducts();
 }
 
-// ------------------ Panel Admin ------------------
 const userList = document.getElementById("userList");
 const adminProductList = document.getElementById("adminProductList");
 const adminForm = document.getElementById("productFormAdmin");
@@ -116,13 +120,11 @@ if ((userList || adminProductList || adminForm) && role === "admin") {
     window.location.href = "login.html";
   }
 
-  // Confirmación visual de sesión
   const statusDiv = document.getElementById("adminStatus");
   if (statusDiv) {
     statusDiv.textContent = "Bienvenida Magali, tu sesión está activa y protegida.";
   }
 
-  // Cargar usuarios registrados en tabla
   async function loadUsers() {
     try {
       const res = await fetch(`${API_URL}/admin/users`, {
@@ -158,7 +160,6 @@ if ((userList || adminProductList || adminForm) && role === "admin") {
         userList.appendChild(row);
       });
 
-      // Evitar duplicación del footer
       const existingFooter = userList.querySelector(".footer-row");
       if (!existingFooter) {
         const footerRow = document.createElement("tr");
@@ -176,7 +177,6 @@ if ((userList || adminProductList || adminForm) && role === "admin") {
     }
   }
 
-  // Cargar productos
   async function loadAdminProducts() {
     try {
       const res = await fetch(`${API_URL}/admin/products`, {
@@ -211,7 +211,7 @@ if ((userList || adminProductList || adminForm) && role === "admin") {
     }
   }
 
-  // Agregar producto (solo en agregar-producto.html)
+
   if (adminForm) {
     adminForm.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -246,13 +246,93 @@ if ((userList || adminProductList || adminForm) && role === "admin") {
   loadAdminProducts();
 }
 
-// ------------------ Logout ------------------
 const logoutBtn = document.getElementById("logoutBtn");
 if (logoutBtn) {
   logoutBtn.addEventListener("click", () => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
+    localStorage.removeItem("name");
+    localStorage.removeItem("email");
+    localStorage.removeItem("isLoggedIn");
     alert("Sesión cerrada");
+     const navRight = document.querySelector(".nav-right");
+    const userMenu = document.getElementById("userMenu");
+    if (navRight) navRight.style.display = "flex"; // vuelve a mostrarlos
+    if (userMenu) userMenu.style.display = "none"; // oculta el menú de bienvenida
+
+
     window.location.href = "index.html";
   });
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const userMenu = document.getElementById("userMenu");
+  const userNameBtn = document.getElementById("userNameBtn");
+  const userDropdown = document.getElementById("userDropdown");
+  const navRight = document.querySelector(".nav-right");
+  const name = localStorage.getItem("name");
+
+  if (name && userMenu && userNameBtn) {
+    // Usuario logueado
+    userMenu.style.display = "block";
+    userNameBtn.textContent = `Bienvenido, ${name}`;
+    if (navRight) navRight.style.display = "none";
+  } else {
+    // Usuario NO logueado
+    if (navRight) navRight.style.display = "flex";
+    if (userMenu) userMenu.style.display = "none";
+  }
+
+  // 👇 Aquí controlamos el despliegue del menú
+  if (userNameBtn && userDropdown) {
+    userNameBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      userDropdown.classList.toggle("show");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!userNameBtn.contains(e.target) && !userDropdown.contains(e.target)) {
+        userDropdown.classList.remove("show");
+      }
+    });
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+  const loginForm = document.getElementById("loginForm");
+
+  if (loginForm) {
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById("loginEmail").value.trim();
+      const password = document.getElementById("loginPassword").value.trim();
+      const role = document.getElementById("loginRole").value;
+
+      // Aquí podrías validar contra tu backend o datos guardados
+      if (email && password && role) {
+        // Guardar sesión en localStorage
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("userEmail", email);
+        localStorage.setItem("userRole", role);
+
+        // Opcional: mostrar nombre en el header
+        localStorage.setItem("name", email.split("@")[0]);
+
+        alert("Inicio de sesión exitoso");
+        window.location.href = role === "admin" ? "admin.html" : "index.html";
+      } else {
+        alert("Por favor completa todos los campos.");
+      }
+    });
+  }
+
+  // Manejo de logout en cualquier página
+  const logoutBtn = document.getElementById("logoutBtn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      localStorage.clear();
+      window.location.href = "index.html";
+    });
+  }
+});
+});

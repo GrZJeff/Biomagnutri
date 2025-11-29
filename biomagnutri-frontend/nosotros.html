@@ -32,6 +32,7 @@
       justify-content: space-between;
       flex-grow: 1;
       margin-left: 20px;
+      align-items: center;
     }
 
     .nav-left,
@@ -60,6 +61,52 @@
       color: white;
     }
 
+    .user-menu {
+      position: relative;
+      margin-left: 20px;
+      display: none; /* oculto por defecto */
+    }
+
+    .user-menu button {
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      font-weight: bold;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .user-dropdown {
+      position: absolute;
+      top: 40px;
+      right: 0;
+      background-color: white;
+      border: 2px solid #2e7d32;
+      border-radius: 10px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: none;
+      width: 180px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .user-dropdown.show {
+      display: block;
+    }
+
+    .user-dropdown li a {
+      display: block;
+      padding: 10px;
+      color: #2e7d32;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .user-dropdown li a:hover {
+      background-color: #f0f8f5;
+    }
 
     /* SECCIÓN NOSOTROS */
     .hero-nosotros {
@@ -75,9 +122,6 @@
       max-height: 220px;
       object-fit: cover;
     }
-
-    
-
 
     /* CONTENIDO PRINCIPAL */
     .nosotros-container {
@@ -154,6 +198,15 @@
         <li><a href="login.html">Inicia sesión</a></li>
         <li><a href="registro.html">Regístrate</a></li>
       </ul>
+
+      <!-- 👇 Bloque de menú de usuario -->
+      <div class="user-menu" id="userMenu">
+        <button id="userNameBtn">Nombre</button>
+        <ul class="user-dropdown" id="userDropdown">
+          <li><a href="perfil.html">Administrar perfil</a></li>
+          <li><a href="#" id="logoutBtn">Cerrar sesión</a></li>
+        </ul>
+      </div>
     </div>
   </header>
 
@@ -165,16 +218,13 @@
 
   <!-- Contenido estilo plantilla -->
   <section class="nosotros-container">
-
     <div class="nosotros-texto">
       <p>
         Soy Ivette Magali, Nutrióloga profesional de la salud. Estoy capacitada para identificar, evaluar y enseñar a las personas a cambiar la alimentación que les generan problemas desde leves, hasta graves a su cuerpo. 
       </p>
-
       <p>
         Me he preparado para esta profesión que amo y me apasiona, soy constante investigadora y participante en nuevos estudios para estar actualizada día a día. Mi objetivo principal es llegar al impacto en la salud que todo individuo desea; por lo anterior escribí la “Guía Alimentaria para la Prevención y Control de Enfermedades Crónicas”.
       </p>
-
       <ul>
         <li>Nutrióloga activa con consultas en línea, presenciales y a domicilio en Aguascalientes.</li>
         <li>Conferencista en empresas como Grupo Lala, INEGI, UAA y Radio Magia Seattle.</li>
@@ -188,10 +238,14 @@
     <div class="ceo-img-container">
       <img src="img/ceo.png" alt="Foto de Ivette Magali">
     </div>
-
   </section>
 
+  <footer style="background-color: #ccf3ce; border-top: 0px solid #a7e9aa; padding: 80px 40px; text-align: center;">
+    <img src="img/logo.png" alt="Logo Biomagnutri" style="height: 100px; margin-bottom: 10px;">
+    <p style="font-size: 13px; color: #999; margin-top: 10px;">© 2023 Biomagnutri S.A. de C.V. Todos los derechos reservados.</p>
+  </footer>
 
-
+  <!-- 👇 Importa tu app.js para que se ejecute la lógica de login/logout -->
+  <script src="app.js"></script>
 </body>
 </html>
