@@ -59,7 +59,7 @@
       color: white;
     }
 
-    /* MAIN CENTRADO */
+ 
     main {
       display: flex;
       justify-content: center;
@@ -69,7 +69,6 @@
       flex-wrap: wrap;
     }
 
-    /* Sección del formulario */
     .form-section {
       flex: 0 1 400px;
       text-align: center;
@@ -82,7 +81,6 @@
       font-weight: bold;
     }
 
-    /* Formulario */
     form {
       display: flex;
       flex-direction: column;
@@ -121,7 +119,7 @@
       background-color: #2e7d32;
     }
 
-    /* Link de login */
+    
     .login-link {
       margin-top: 5px;
       font-size: 15px;
@@ -129,7 +127,6 @@
       text-decoration: underline;
     }
 
-    /* Imagen */
     .image-section {
       flex: 0 1 450px;
       text-align: center;
@@ -147,7 +144,7 @@
 
 <body>
 
-  <!-- HEADER -->
+ 
   <header>
     <a href="index.html">
       <img src="img/logo.png" alt="Logo Biomagnutri">
@@ -167,25 +164,21 @@
     </div>
   </header>
 
-  <!-- MAIN -->
   <main>
-    <!-- FORMULARIO DE RESTABLECIMIENTO -->
     <div class="form-section">
       <h2>Restablecer Contraseña</h2>
 
-      <!-- Paso 1: ingresar correo -->
       <form id="resetForm">
         <input type="email" id="email" placeholder="Correo electrónico" required>
         <button type="submit">Enviar código</button>
       </form>
 
-      <!-- Paso 2: ingresar código -->
       <form id="verifyForm" style="display:none;">
         <input type="text" id="code" placeholder="Código de verificación" required>
         <button type="submit">Verificar código</button>
       </form>
 
-      <!-- Paso 3: nueva contraseña -->
+
       <form id="newPassForm" style="display:none;">
         <input type="password" id="newPassword" placeholder="Nueva contraseña" required>
         <button type="submit">Restablecer contraseña</button>
@@ -194,7 +187,7 @@
       <a class="login-link" href="login.html">¿Ya tienes cuenta? Inicia sesión</a>
     </div>
 
-    <!-- IMAGEN -->
+
     <div class="image-section">
       <img src="img/frascoagua.png" alt="Frasco de colágeno hidrolizado con agua">
     </div>
@@ -202,7 +195,6 @@
 
   <script src="resetpass.js"></script>
 
-  <!-- FOOTER -->
   <footer style="background-color: #ccf3ce; border-top: 0px solid #a7e9aa; padding: 80px 40px; text-align: center;">
     <img src="img/logo.png" alt="Logo Biomagnutri" style="height: 100px; margin-bottom: 10px;">
     <p style="font-size: 13px; color: #999; margin-top: 10px;">© 2023 Biomagnutri S.A. de C.V. Todos los derechos reservados.</p>
